@@ -29,7 +29,7 @@ def compareTextsOverlap(eGold, eModel):
     tp, fp, fn = 0, 0, 0
     for (offsets_gold, cat_gold) in eGold:
         for (offsets_model, cat_model) in eModel:
-            if overlap(offsets_gold, offsets_model) and cat_gold == cat_model:
+            if overlap(offsets_gold, offsets_model) and cat_gold.lower() == cat_model.lower():
                 tp += 1
                 break
     fp = len(eModel) - tp
@@ -42,7 +42,7 @@ def compareTextsExact(eGold, eModel):
     tp, fp, fn = 0, 0, 0
     for (offsets_gold, cat_gold) in eGold:
         for (offsets_model, cat_model) in eModel:
-            if exact(offsets_gold, offsets_model) and cat_gold == cat_model:
+            if exact(offsets_gold, offsets_model) and cat_gold.lower() == cat_model.lower():
                 tp += 1
                 break
     fp = len(eModel) - tp
