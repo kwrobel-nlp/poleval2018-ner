@@ -114,19 +114,19 @@ def computeScores(goldfile, userfile, htype="split"):
             else:
                 idsToAnnsGold[idGold] = goldjson['questions'][nr]['answers'][0]['data']['brat']
 
-                # overlap scores:
-                ovtp = compareTextsOverlap(makeAnnsFormat(idsToAnnsGold[idGold], 3, htype),
-                                           makeAnnsFormat(idsToAnnsUser[idGold], 2, htype))
-                global_tp_ov += ovtp[0]
-                global_fp_ov += ovtp[1]
-                global_fn_ov += ovtp[2]
+            # overlap scores:
+            ovtp = compareTextsOverlap(makeAnnsFormat(idsToAnnsGold[idGold], 3, htype),
+                                        makeAnnsFormat(idsToAnnsUser[idGold], 2, htype))
+            global_tp_ov += ovtp[0]
+            global_fp_ov += ovtp[1]
+            global_fn_ov += ovtp[2]
 
-                # exact match scores:
-                extp = compareTextsExact(makeAnnsFormat(idsToAnnsGold[idGold], 3, htype),
-                                         makeAnnsFormat(idsToAnnsUser[idGold], 2, htype))
-                global_tp_ex += extp[0]
-                global_fp_ex += extp[1]
-                global_fn_ex += extp[2]
+            # exact match scores:
+            extp = compareTextsExact(makeAnnsFormat(idsToAnnsGold[idGold], 3, htype),
+                                      makeAnnsFormat(idsToAnnsUser[idGold], 2, htype))
+            global_tp_ex += extp[0]
+            global_fp_ex += extp[1]
+            global_fn_ex += extp[2]
 
         # id not found
         else:
